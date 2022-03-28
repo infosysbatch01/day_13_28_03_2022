@@ -146,8 +146,21 @@ SELECT CompId, Make, Model FROM Computer WHERE CompId = (SELECT CompId FROM Empl
 ORA-01427: single-row subquery returns more than one row
 SELECT CompId, Make, Model FROM Computer WHERE CompId IN (SELECT CompId FROM Employee);
 ---------------------------------------------------------------------------------------------
-Q Display the computer and the count allocated to the employees.
-Q display the department which was allocted with highest number of computers.
+Q Display the computer make and the count allocated to the employees.
+Q display the department which was allocted with the highest number of computers.
 Q Display the computer id and make and model which was never allocated to the employees.
 Q Display the dept where the count of dell computer is more than 2.
+Q Display the id,ename for the employee who is having same department as of Ethan McCarty.
+For the below Questions please make use of the tables:
+1) Quotation
+2) item
+Q display itemcode,itemtype whose price is maximum.
+Q Display the itemtype and itemtypewise average price.
+Q Display the item description for the most costliest item in the store.
+Q display the item description which is having highest quotation price.
+Q display the item description which is having the highest quotation price and was accepted.
+Q Display all those quatation id and item id for which the quotation month is oct.
+Q display the total price of items in item type computer.
+
+
 
