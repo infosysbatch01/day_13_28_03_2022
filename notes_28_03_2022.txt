@@ -142,3 +142,12 @@ HAVING count(id)=(SELECT max(count(id))
 FROM employee
 GROUP BY dept);
 --------------------------------------------------------------------------------------------
+SELECT CompId, Make, Model FROM Computer WHERE CompId = (SELECT CompId FROM Employee);
+ORA-01427: single-row subquery returns more than one row
+SELECT CompId, Make, Model FROM Computer WHERE CompId IN (SELECT CompId FROM Employee);
+---------------------------------------------------------------------------------------------
+Q Display the computer and the count allocated to the employees.
+Q display the department which was allocted with highest number of computers.
+Q Display the computer id and make and model which was never allocated to the employees.
+Q Display the dept where the count of dell computer is more than 2.
+
