@@ -1,0 +1,144 @@
+Display id,ename,compid and model. 
+
+SELECT id,ename,employee.compid,model
+FROM employee JOIN computer
+ON employee.compid=computer.compid
+------------------------------------------------------------------------------
+SELECT id,ename,emp.compid,model
+FROM employee emp JOIN computer comp
+ON emp.compid=comp.compid
+----------------------------------------------------------------------------------------
+Theta style
+SELECT ID, ENAME, c.COMPID, MODEL 
+FROM Employee E, Computer  c 
+WHERE E.COMPID = C.COMPID
+
+ANSI style
+
+SELECT ID, ENAME, c.COMPID, MODEL 
+FROM Employee E INNER JON Computer  c 
+ON E.COMPID = C.COMPID
+------------------------------------------------------------------------------------------------------
+Independent Subquery:- as per the term, in Independent subquery
+the inner query is executed first and the output of inner 
+query goes as input for outer query.
+
+
+Subquery:- A query within another query.
+
+Display the name of the employee who is getting the highest salary.
+
+1) SELECT ename 
+FROM employee;
+
+
+2) SELECT max(salary) 
+FROM employee;
+
+SELECT ename
+FROM employee
+WHERE salary=90000;
+
+Combining 1) and 2)
+
+SELECT ename
+FROM employee
+WHERE salary=(SELECT max(salary) FROM employee);
+
+
+--------------------------------------------------------------------------------------------------
+SELECT ename
+FROM employee
+WHERE salary>=(SELECT avg(salary) FROM employee);
+
+SELECT id,ename,avg(salary) 
+FROM employee
+
+ORA-00937: not a single-group group function
+------------------------------------------------------------------------------------------------
+Display id,ename and avg salary with all the records.
+
+SELECT id,ename,(SELECT avg(salary) FROM employee) as AVG_SALARY 
+FROM employee; 
+----------------------------------------------------------------------------------
+SELECT id,ename,manager FROM (SELECT id,ename,salary,manager FROM employee) emp;
+SELECT * FROM (SELECT id,ename,salary,manager FROM employee) emp;
+---------------------------------------------------------------------------------------
+Display the department which is having maximum number of employees.
+
+SELECT dept,count(id)
+FROM employee;
+-- display all the departments and display just the count of employees.
+
+
+SELECT dept,count(id)
+FROM employee
+GROUP BY dept;
+
+SELECT max(count(id))
+FROM employee
+GROUP BY dept;
+-- In the above sql command we are getting a single value.
+
+
+
+SELECT dept,max(count(id))
+FROM employee
+GROUP BY dept;
+
+-- In above command we are displaying all the departments followed by a
+column which is having only one value for maximum count.
+ORA-00937: not a single-group group function
+
+SELECT dept
+FROM employee
+GROUP BY dept
+HAVING count(id)=(SELECT max(count(id))
+FROM employee
+GROUP BY dept);
+
+
+------------------------------------------------------------------------------------------------
+SELECT dept
+FROM employee
+GROUP BY dept
+-------------------------------------------------------------------------------------------------
+
+SELECT count(id)
+FROM employee
+GROUP BY dept
+---------------------------------------------------------------------------------------------
+SELECT dept,count(id)
+FROM employee
+GROUP BY dept
+
+-----------------------------------------------------------------------------------------------
+SELECT max(count(id))
+FROM employee
+group By dept;
+------------------------------------------------------------------------------------
+Display the department which is having maximum count of employee
+SELECT dept
+FROM employee
+GROUP BY dept
+HAVING count(id)=(SELECT max(count(id))
+FROM employee
+group By dept);
+----------------------------------------------------------------------------------------
+1. SELECT dept
+FROM employee
+GROUP BY dept
+
+
+
+2. SELECT max(count(id))
+FROM employee
+GROUP BY dept;
+
+SELECT dept
+FROM employee
+GROUP BY dept
+HAVING count(id)=(SELECT max(count(id))
+FROM employee
+GROUP BY dept);
+--------------------------------------------------------------------------------------------
