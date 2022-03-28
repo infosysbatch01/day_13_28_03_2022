@@ -161,6 +161,117 @@ Q display the item description which is having highest quotation price.
 Q display the item description which is having the highest quotation price and was accepted.
 Q Display all those quatation id and item id for which the quotation month is oct.
 Q display the total price of items in item type computer.
+----------------------------------------------------------------------------------------------
+Make use of following tables:
+Customer
+Item
+purchasebill
+retailoutlet
+retailstock
+
+Q Display custid,custtype and custname for the employees who have purchased itemcode I1002.
+Q display the custid, custtype and custname who had purchased cookies.
+Q Display the custid, custname,itemcode,descr,roid and retail outlet location names.
+Q Display the custid, custname, itemcode, descr, roid and retail outlet where the the location is
+california.
+Q display the custid, custtype for the customer name starting with J.
+Q display the count of regular and Privileged customer [ Hint: group By].
+Q Display the custid, custname where emailid ends with easy.com.
+Q Display the custid, custname who had never purchased an item from the store.
+Q Display the custid, custname where total bill amount paid is maximum.
+Q Display the retaillocation name which is having the highest number of items.
+Q Display the itemid, itemname which belongs to the retail which is having highest/maximum number of items.
+Q Display the customerid, customer name who has purchased the item which belongs to the retail who is
+having maximum number of items. 
+
+
+customer
+
+CUSTID	CUSTTYPE    CUSTNAME	GENDER	SPOUSE	EMAILID	ADDRESS
+2001	Regular	         John	M	NULL	john@easy.com	Allen Street, New York
+2002	Regular	         Jason	M	NULL	jason@adgm.in	Richmond Parkway, California
+2003	Privileged	 Sam	M	NULL	sam@xyz.corp	Ann Street, New York
+2004	Privileged	 Susan	F	NULL	susan@adgm.in	Allen Street, New York
+2005	Privileged	 Nancy	F	NULL	nancy@xyz.corp	East Fork Road, California
+2006	Regular  	 Rachel	F	NULL	rachel1@easy.com	Charles Street, New York
+2007	Regular	         Dexter	M	NULL	dexter2@easy.com	Beak Street, New York
+2008	Regular	         Thomas	M	NULL	thomas3@easy.com	Sand Hill Road, California
+2009	Regular	         Christina	F	NULL	christina4@easy.com	Sand Hill Road, California
+2010	Regular	Megan	F	NULL	megan5@easy.com	Richmond Parkway, California
+
+item
+ITEMCODE	ITEMTYPE	DESCR	PRICE	REORDERLEVEL	QTYONHAND	CATEGORY
+I1001	FMCG	Britannia Marie Gold Cookies	20	100	1000	C
+I1002	FMCG	Best Rice	120	100	1000	C
+I1003	FMCG	Modern Bread	15	100	1000	C
+I1004	Apparels	Lee T-Shirt	300	100	1000	B
+I1005	Apparels	Levis T-Shirt	1700	100	1000	B
+I1006	Apparels	Satyapaul Sari	7300	100	1000	A
+I1007	Apparels	Allen Solly Tie	600	100	1000	C
+I1008	Computer	Xbox gamepad	1500	100	50	B
+I1009	Computer	Microsoft Mouse	700	120	50	C
+I1010	Computer	Intel C2D Processor	6500	50	25	A
+I1011	Computer	Intel Motherboard	5000	50	25	A
+I1012	Computer	500GB Hard disk	2500	150	50	B
+I1013	Computer	320GB Hard disk	1800	150	50	B
+I1014	FMCG	Aroma Bread	17	100	50	C
+I1015	Apparels	Arrow Jeans	7300	50	60	A
 
 
 
+
+purchasebill
+BILLID	ROID	ITEMCODE	CUSTID	BILLAMOUNT	BILLDATE	QUANTITY
+5001	R1001	I1002	2001	342.38	02-Jun-15	3
+5002	R1001	I1001	2002	86.62	02-Jun-15	4
+5003	R1001	I1004	2002	359.71	03-Jun-15	1
+5004	R1002	I1003	2003	64.2	03-Jun-15	3
+5005	R1002	I1002	2005	283.28	03-Jun-15	2
+5006	R1002	I1004	2004	1222.8	05-Jun-15	3
+5007	R1002	I1013	2007	2344.21	05-Jun-15	1
+5008	R1002	I1007	2002	1628.36	06-Jun-15	2
+5009	R1001	I1011	2005	5441.46	08-Jun-15	1
+5010	R1001	I1013	2007	8983.5	08-Jun-15	4
+5011	R1001	I1015	2002	7846.3	08-Jun-15	1
+5012	R1002	I1008	2004	5092.96	10-Jun-15	2
+5013	R1002	I1010	2008	6930.22	10-Jun-15	1
+
+
+retailoutlet
+ROID	LOCATION	MANAGERID
+R1001	California	1002
+R1002	New York	1006
+R1003	Dallas	NULL
+
+retailstock
+
+OID	ITEMCODE	UNITPRICE	QTYAVAILABLE
+R1001	I1001	21.25	28
+R1001	I1002	112	20
+R1001	I1003	18.5	20
+R1001	I1004	353	100
+R1001	I1007	709	50
+R1001	I1006	7350	20
+R1001	I1010	6199	100
+R1001	I1011	5340	150
+R1001	I1012	2510	50
+R1001	I1013	2204	50
+R1001	I1015	7700	60
+R1002	I1001	25.25	25
+R1002	I1002	139	50
+R1002	I1003	21	20
+R1002	I1004	400	110
+R1002	I1005	1751	60
+R1002	I1006	7499	50
+R1002	I1007	799	20
+R1002	I1008	2499	70
+R1002	I1009	903	80
+R1002	I1010	6801	20
+R1002	I1011	5402	30
+R1002	I1012	2900.5	130
+R1002	I1013	2300.5	60
+R1002	I1014	29.25	75
+R1002	I1015	7400	65
+R1003	I1012	3000.5	50
+R1003	I1015	7800	40
+R1003	I1008	2600	30
